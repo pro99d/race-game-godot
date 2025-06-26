@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://bt3l4l3ksbsj"]
+
+[ext_resource type="Script" uid="uid://o8pyaehvxnr" path="res://main.gd" id="1_w86o8"]
+[ext_resource type="Texture2D" uid="uid://ca4r1du2dxe0d" path="res://sprites/track.png" id="2_0xm2m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
+size = Vector2(174, 36)
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_w86o8")
+
+[node name="Track" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Track2" type="Sprite2D" parent="Track"]
+position = Vector2(683, 384)
+texture = ExtResource("2_0xm2m")
+
+[node name="Area2D" type="Area2D" parent="Track"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Track/Area2D"]
+scale = Vector2(1, 1.00003)
+polygon = PackedVector2Array(1268, 659.983, 1305, 257.993, 1273, 131.997, 1132, 38.999, 740, 51.9986, 432, 308.992, 432, 135.996, 366, 35.9991, 241, -13.9996, 37, 104.997, -4, 465.988, 27, 669.983, 203, 754.98, 630, 738.981, 1085, 760.98, 1254, 706.982, 1094, 581.985, 203, 575.985, 206, 189.995, 244, 179.995, 250, 380.99, 294, 465.988, 426, 496.987, 514, 465.988, 812, 220.994, 1116, 229.994, 1104, 528.986, 1095, 579.985, 1255, 705.982)
+
+[node name="checkpoint" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="checkpoint"]
+position = Vector2(340, 172)
+shape = SubResource("RectangleShape2D_0xm2m")
+
+[node name="finish" type="Area2D" parent="checkpoint"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="checkpoint/finish"]
+position = Vector2(1215, 474.5)
+shape = SubResource("RectangleShape2D_0xm2m")
+
+[node name="fps_label" type="Label" parent="."]
+offset_right = 9.0
+offset_bottom = 29.0
+
+[connection signal="body_entered" from="Track/Area2D" to="." method="_on_body_entered"]
+[connection signal="body_exited" from="Track/Area2D" to="." method="_on_body_exited"]
+[connection signal="body_entered" from="checkpoint" to="." method="_checkpoint"]
+[connection signal="body_entered" from="checkpoint/finish" to="." method="_body_finished"]

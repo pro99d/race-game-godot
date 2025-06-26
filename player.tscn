@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dan88kbnqb6l0"]
+
+[ext_resource type="Script" uid="uid://4s4gotfmfsa0" path="res://character_body_2d.gd" id="1_onrkg"]
+[ext_resource type="Texture2D" uid="uid://dr25iga72wbu3" path="res://sprites/red_car.png" id="2_i3pqv"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hqtel"]
+radius = 73.0
+height = 312.0
+
+[node name="player" type="CharacterBody2D"]
+position = Vector2(3, 2)
+script = ExtResource("1_onrkg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+scale = Vector2(0.2, 0.2)
+shape = SubResource("CapsuleShape2D_hqtel")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_i3pqv")

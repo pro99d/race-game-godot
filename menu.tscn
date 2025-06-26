@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://bkjowj7fr6bei"]
+
+[ext_resource type="Script" uid="uid://bywcu7cs7s8rj" path="res://menu.gd" id="1_lti8b"]
+[ext_resource type="Texture2D" uid="uid://bmsc857knwxr8" path="res://onscreen_controls/flat_dark/play.png" id="2_4hy44"]
+[ext_resource type="Texture2D" uid="uid://dmypuo5e7ro1e" path="res://onscreen_controls/flat_dark/gear.png" id="3_ytr4m"]
+[ext_resource type="Texture2D" uid="uid://d36br21h5w6tv" path="res://onscreen_controls/flat_dark/close.png" id="4_l48gv"]
+
+[node name="menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lti8b")
+
+[node name="play" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 683.0
+offset_top = 316.0
+offset_right = 731.0
+offset_bottom = 364.0
+texture_normal = ExtResource("2_4hy44")
+
+[node name="settings" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 683.0
+offset_top = 384.0
+offset_right = 723.0
+offset_bottom = 424.0
+texture_normal = ExtResource("3_ytr4m")
+
+[node name="exit" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 683.0
+offset_top = 452.0
+offset_right = 731.0
+offset_bottom = 500.0
+texture_normal = ExtResource("4_l48gv")
+
+[node name="Popup" type="Popup" parent="."]
+
+[connection signal="button_down" from="play" to="." method="_on_play_button_down"]
+[connection signal="button_down" from="settings" to="." method="_on_settings_button_down"]
+[connection signal="button_down" from="exit" to="." method="_on_exit_button_down"]
